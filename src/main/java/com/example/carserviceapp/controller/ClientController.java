@@ -22,7 +22,7 @@ public class ClientController {
         return clientService.getAllClients();
     }
 
-    //getting a client by id
+    //finding the client by id
     @GetMapping("/{id}")
     public ClientModel getClientById(@PathVariable("id") long id) {
         return clientService.getClientById(id);
@@ -35,12 +35,13 @@ public class ClientController {
 
     }
 
-    //editing a client
+    //editing client's details
     @PatchMapping("/{id}")
     public ClientModel EditClient(@PathVariable long id, @RequestBody ClientModel clientmodel) {
         return clientService.EditClient(id, clientmodel);
     }
 
+    //deletion of the client
     @DeleteMapping("/{id}")
     public ClientModel removeClient(@PathVariable("id") long id) {
         return clientService.deleteClient(id);
