@@ -1,16 +1,14 @@
 package com.example.carserviceapp.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
+@Builder
 public class EmployeeModel {
 
     @Id
@@ -29,8 +27,6 @@ public class EmployeeModel {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "access")
-    private String access;
 
 
 

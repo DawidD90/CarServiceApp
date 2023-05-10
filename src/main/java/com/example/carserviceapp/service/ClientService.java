@@ -35,7 +35,7 @@ public class ClientService {
 
     public ClientModel EditClient(long id, ClientModel clientModel) {
         ClientModel modelNew = clientRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Nie znaleziono"));
+                .orElseThrow(() -> new EntityNotFoundException("Not found"));
         modelNew.setName(clientModel.getName());
         modelNew.setSurname(clientModel.getSurname());
         modelNew.setNumber(clientModel.getNumber());
