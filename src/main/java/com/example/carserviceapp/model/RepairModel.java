@@ -21,14 +21,14 @@ public class RepairModel {
 
     @Column(name = "make")
     private String make;
-    @Column(name = "status")
+    @Column(name = "model")
     private String model;
     @Column(name = "issue")
     private String issue;
-    @Column(name = "acceptance_date")
+    @Column(name = "acceptancedate")
     @DateTimeFormat(pattern= "dd-MM-yyyy")
     private Date acceptanceDate;
-    @Column(name = "return_date")
+    @Column(name = "returndate")
     @DateTimeFormat(pattern= "dd-MM-yyyy")
     private Date returnDate;
 
