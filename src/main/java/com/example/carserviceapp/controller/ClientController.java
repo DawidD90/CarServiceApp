@@ -2,21 +2,48 @@ package com.example.carserviceapp.controller;
 
 import com.example.carserviceapp.model.ClientModel;
 import com.example.carserviceapp.service.ClientService;
+import com.mysql.cj.xdevapi.Client;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
 @RequiredArgsConstructor
-@Controller
+@RestController
 @RequestMapping("/client")
 public class ClientController {
+
     private final ClientService clientService;
 
+    //getting a list of clients
+    @GetMapping("/")
+    public List<ClientModel> getAllClients() {
+        return clientService.getAllClients();
+    }
 
+    //getting a client by id
+    @GetMapping("/{id}")
+    public ClientModel getClientById(@PathVariable("id") long id) {
+        return clientService.getClientById(id);
+    }
+
+    //adding a new client
+    @PostMapping("/")
+    public ClientModel addClient(@RequestBody ClientModel client) {
+        return clientService.addClient(client);
+
+    }
+
+    //editing a client
+    @PatchMapping("/{id}")
+    public ClientModel EditClient(@PathVariable long id, @RequestBody ClientModel clientmodel) {
+        return clientService.EditClient(id, clientmodel);
+    }
+
+    @DeleteMapping("/{id}")
+    public ClientModel removeClient(@PathVariable("id") long id) {
+        return clientService.deleteClient(id);
+    }
 
 }
-
