@@ -21,7 +21,7 @@ public class EmployeeController{
         return employeeService.getAllEmployees();
     }
 
-    //finding the client by id
+    //finding employee by id
     @GetMapping("/{id}")
     public EmployeeModel getEmployeeById(@PathVariable("id") long id) {
         return employeeService.getEmployeeById(id);
