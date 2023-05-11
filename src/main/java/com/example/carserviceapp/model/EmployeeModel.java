@@ -1,8 +1,9 @@
 package com.example.carserviceapp.model;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 
+import javax.persistence.*;
 import java.util.List;
 
 
@@ -25,6 +26,9 @@ public class EmployeeModel {
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "username")
+    private String userName;
 
     @Column(name = "email")
     private String email;

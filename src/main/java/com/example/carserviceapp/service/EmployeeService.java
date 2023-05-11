@@ -1,20 +1,34 @@
 package com.example.carserviceapp.service;
 
+import com.example.carserviceapp.model.EmployeeDetails;
 import com.example.carserviceapp.model.EmployeeModel;
 import com.example.carserviceapp.repository.EmployeeRepository;
-import jakarta.persistence.EntityNotFoundException;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
-@RequiredArgsConstructor
 @Service
 @Slf4j
-public class EmployeeService {
+public class EmployeeService implements UserDetailsService {
     private final EmployeeRepository employeeRepository;
+
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+        Optional<EmployeeModel> employeeModel = employeeRepository.findByUserName(userName);
+        employeeModel.orElseThrow(()-> new UsernameNotFoundException("Not found user with username: " + userName));
+
+        return employeeModel.map(EmployeeDetails::new).get();
+    }
 
     public List<EmployeeModel> getAllEmployees() {
         return employeeRepository.findAll();
@@ -25,8 +39,9 @@ public class EmployeeService {
                 .name(employeeModel.getName())
                 .surname(employeeModel.getSurname())
                 .phoneNumber(employeeModel.getPhoneNumber())
-                .email(employeeModel.getEmail())
+                .userName(employeeModel.getUserName())
                 .password(employeeModel.getPassword())
+                .email(employeeModel.getEmail())
                 .build();
         employeeRepository.save(employeeModel1);
         return employeeModel1;
@@ -38,8 +53,9 @@ public class EmployeeService {
         employee1.setName(employeeModel.getName());
         employee1.setSurname(employeeModel.getSurname());
         employee1.setPhoneNumber(employeeModel.getPhoneNumber());
-        employee1.setEmail(employeeModel.getEmail());
+        employee1.setUserName(employeeModel.getUserName());
         employee1.setRole(employeeModel.getRole());
+        employee1.setEmail(employeeModel.getEmail());
         employee1 = employeeRepository.save(employee1);
         return employee1;
 
@@ -59,5 +75,4 @@ public class EmployeeService {
             return null;
         }
     }
-
 }

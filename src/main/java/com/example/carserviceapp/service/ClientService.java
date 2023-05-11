@@ -2,11 +2,12 @@ package com.example.carserviceapp.service;
 
 import com.example.carserviceapp.model.ClientModel;
 import com.example.carserviceapp.repository.ClientRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Service
 @Slf4j
 public class ClientService {
+
     private final ClientRepository clientRepository;
 
     public List<ClientModel> getAllClients() {

@@ -6,8 +6,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
+import java.util.Optional;
+
 public interface EmployeeRepository extends JpaRepository<EmployeeModel,Long> {
+
+    Optional<EmployeeModel> findByUserName(String userName);
 
     Page<EmployeeModel> findAllBy(Pageable pageable);
 

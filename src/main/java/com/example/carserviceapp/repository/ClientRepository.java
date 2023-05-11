@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientRepository extends JpaRepository<ClientModel,Long> {
 
-        Page<ClientModel> findAllBy(Pageable pageable);
+//        Page<ClientModel> findAllBy(Pageable pageable);
 }

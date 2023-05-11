@@ -1,17 +1,12 @@
 package com.example.carserviceapp.service;
 
-import com.example.carserviceapp.model.ClientModel;
-import com.example.carserviceapp.model.EmployeeModel;
 import com.example.carserviceapp.model.RepairModel;
 import com.example.carserviceapp.repository.RepairRepository;
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Date;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 @RequiredArgsConstructor
