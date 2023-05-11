@@ -4,6 +4,7 @@ import com.example.carserviceapp.model.ClientModel;
 import com.example.carserviceapp.model.EmployeeModel;
 import com.example.carserviceapp.service.EmployeeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,7 @@ public class EmployeeController{
     }
 
     //editing employee's details
+    @Secured("ROLE_ADMIN")
     @PatchMapping("/{id}")
     public EmployeeModel EditEmployee(@PathVariable long id, @RequestBody EmployeeModel employeemodel) {
         return employeeService.EditEmployee(id, employeemodel);

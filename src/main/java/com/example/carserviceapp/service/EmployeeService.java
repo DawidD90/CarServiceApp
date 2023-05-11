@@ -26,6 +26,7 @@ public class EmployeeService {
                 .surname(employeeModel.getSurname())
                 .phoneNumber(employeeModel.getPhoneNumber())
                 .email(employeeModel.getEmail())
+                .password(employeeModel.getPassword())
                 .build();
         employeeRepository.save(employeeModel1);
         return employeeModel1;
@@ -38,6 +39,7 @@ public class EmployeeService {
         employee1.setSurname(employeeModel.getSurname());
         employee1.setPhoneNumber(employeeModel.getPhoneNumber());
         employee1.setEmail(employeeModel.getEmail());
+        employee1.setRole(employeeModel.getRole());
         employee1 = employeeRepository.save(employee1);
         return employee1;
 

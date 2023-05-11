@@ -29,6 +29,10 @@ public class EmployeeModel {
     @Column(name = "email")
     private String email;
 
+    @Column(name="password")
+    private String password;
+    @Column(name="role")
+    private String role;
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,mappedBy = "employeeModel")
     private List<RepairModel> repairModel;
 
