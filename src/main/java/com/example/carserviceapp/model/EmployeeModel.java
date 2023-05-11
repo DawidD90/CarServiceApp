@@ -3,6 +3,8 @@ package com.example.carserviceapp.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +29,8 @@ public class EmployeeModel {
     @Column(name = "email")
     private String email;
 
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,mappedBy = "employeeModel")
+    private List<RepairModel> repairModel;
 
 
 

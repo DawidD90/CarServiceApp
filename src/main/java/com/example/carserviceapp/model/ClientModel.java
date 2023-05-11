@@ -3,6 +3,8 @@ package com.example.carserviceapp.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @Builder
@@ -27,4 +29,7 @@ public class ClientModel {
 
     @Column(name = "document_number")
     private String document;
+
+  @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE,mappedBy = "clientModel")
+    private List<RepairModel> repairModel;
 }
